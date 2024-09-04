@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="/src/js/controller.js"></script>
+    <title>Task Management System</title>
+    <link rel="stylesheet" href="/src/css/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body ng-controller="myController">
+    <div>
+        <input type="text" ng-model="name" placeholder="Enter your name!!">
+        <input type="number" ng-model="age" placeholder="Enter your age">
+        <input type="number" ng-model="rollNo" placeholder="Enter your roll number">
+        <button ng-click="addPerson()">Add Person</button>
+    </div>
+
+    <div>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>S.N</th>
+                        <th>Name</th>
+                        <th>Roll Number</th>
+                        <th>Age</th>
+                        <th>Action</th>
+                        <th>View Details</th>
+
+                    </tr>
+                </thead>
+                <tbody ng-repeat="person in people track by person.id">
+                    <tr>
+                        <td ng-bind="$index + 1"></td>
+                        <td ng-bind="person.name"></td>
+                        <td ng-bind="person.rollNo"></td>
+                        <td ng-bind="person.age"></td>
+                        <td>
+                            <button ng-click="deletePerson(person.id)">Delete</button>
+                        </td>
+                        <td>
+                            <button ng-click="viewDetails(person)">View</button>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    </div>
+</body>
+
+</html>
